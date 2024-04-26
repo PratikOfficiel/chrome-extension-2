@@ -1,0 +1,29 @@
+{
+    "manifest_version": 3,
+    "name": "Get those Images",
+    "version": "1.0",
+    "description": "Extension to get hight quality images from flipkart and amazon",
+    "permissions": [
+        "activeTab",
+        "downloads"
+    ],
+    "content_scripts": [
+        {
+            "js": ["flipkart.js"],
+            "matches": [
+                "*://www.flipkart.com/*",
+                "*://flipkart.com/*"
+            ]
+        },
+        {
+            "js": ["amazon.js"],
+            "matches": [
+                "*://www.amazon.in/*",
+                "*://amazon.in/*"
+            ]
+        }
+    ],
+    "background": {
+        "service_worker": "background.js"
+    }
+}
