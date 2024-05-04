@@ -2,7 +2,7 @@
 
 This repository contains a simple browser extension designed to extract and download high-quality images from product pages on Amazon and Flipkart.
 
-## Beta Mode
+## Beta Version
 
 While the extension is safe to use, please note that it is currently in beta mode. It will start working automatically once installed and when visiting a product page.
 
