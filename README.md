@@ -1,16 +1,22 @@
-﻿# Ecommerce Product Images Extension 
-This is a simple extension which extracts and download High Quality Images from Amazon and Flipkart Product pages. 
+# High Quality Image Extractor Extension
 
-Although completely safe to use it is still in beta mode (it starts working automatically when installed and visited to a product page). 
+This repository contains a simple browser extension designed to extract and download high-quality images from product pages on Amazon and Flipkart.
 
-To use it follow these steps: 
+## Beta Mode
 
-clong this repository
-go to manage extensions
-enable developer mode
-click on Load unpacked
-select the extension folder with manifest.json file
+While the extension is safe to use, please note that it is currently in beta mode. It will start working automatically once installed and when visiting a product page.
 
-That's all!
+## Installation
 
-If you will visit any product page on flipkart or Amazon it will automatically go through all the images and download high quality version of them (which are not fetched by the website until you hover over them).
+To use the extension, follow these steps:
+
+1. Clone this repository to your local machine.
+2. Go to your browser's extension settings and enable developer mode.
+3. Click on "Load unpacked" and select the extension folder containing the manifest.json file.
+
+That's it! The extension is now installed and ready to use.
+
+## Usage
+
+Once installed, simply visit any product page on Flipkart or Amazon. The extension will automatically scan the page for images and download high-quality versions of them. Note that these high-quality images may not be fetched by the website until you hover over them.
+
