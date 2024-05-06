@@ -27,13 +27,14 @@ async function getImageSrc(image) {
     })
 }
 async function printImageUrl(i){
-    const element = document.getElementsByClassName("_53J4C-")[0];
-
+    const element = document.getElementsByClassName("vU5WPQ")[0];
+    
+    console.log("div",element);
     element.dispatchEvent(mouseOverEvent);
 
     const imgElement = document.getElementsByClassName("SuLbm2")[0];
 
-    
+    console.log("img", imgElement)
     try {
         const imgSrc = await getImageSrc(imgElement);
     
@@ -46,7 +47,7 @@ async function printImageUrl(i){
     }
 }
 
-const imagesList = document.getElementsByClassName("HXf4Qp jmR1E0");
+const imagesList = document.getElementsByClassName("HXf4Qp");
 let i=0;
 
 const id = setInterval(changeImage,1000)
