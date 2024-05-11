@@ -18,5 +18,5 @@ That's it! The extension is now installed and ready to use.
 
 ## Usage
 
-Once installed, simply visit any product page on Flipkart or Amazon. The extension will automatically scan the page for current product's images and download high-quality versions of them. To see the difference try saving images from this product pages manually using save image as or open image in new tab.
+Once installed, simply visit any product page on Flipkart or Amazon. The extension will automatically scan the page for current product's images and download high-quality versions of them. To see the impact try saving images from this product pages manually using save image as or open image in new tab.
 
