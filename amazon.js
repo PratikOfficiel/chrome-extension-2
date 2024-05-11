@@ -23,7 +23,7 @@ function changeImage() {
 
 function startSaving() {
 
-    const images = document.getElementsByClassName("a-dynamic-image a-stretch-vertical");
+    const images = [...document.getElementsByClassName("a-dynamic-image a-stretch-vertical"),...(document.getElementsByClassName("a-dynamic-image a-stretch-horizontal"))];
 
     for(let i=0;i<images.length;i++) {
 
