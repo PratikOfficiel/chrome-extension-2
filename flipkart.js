@@ -52,7 +52,7 @@ async function printImageUrl(i){
 }
 
 
-;(async function changeImage() {
+(async function changeImage() {
 
     for(let i=0;i<imagesList.length;i++) {
         const divElement = imagesList[i];
@@ -77,6 +77,6 @@ async function startSaving() {
         }
     }
 
-    console.log('All images have been processed.');
+    // console.log('All images have been processed.');
 }
 

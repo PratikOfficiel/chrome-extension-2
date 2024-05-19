@@ -1,4 +1,5 @@
 const imageLinks=[];
+const imagesList = document.getElementsByClassName("a-spacing-small item imageThumbnail a-declarative");
 
 const mouseOverEvent = new MouseEvent('mouseover', {
     bubbles: true,
@@ -6,22 +7,16 @@ const mouseOverEvent = new MouseEvent('mouseover', {
     view: window
 });
 
-const imagesList = document.getElementsByClassName("a-spacing-small item imageThumbnail a-declarative");
-let i=0;
+(async function changeImage() {
 
-const id = setInterval(changeImage,1000)
-
-function changeImage() {
-    const divElement = imagesList[i];
-    divElement.dispatchEvent(mouseOverEvent);
-    i++;
-    if(i==imagesList.length){
-        clearInterval(id);
-        startSaving();
+    for(let i=0;i<imagesList.length;i++) {
+        const divElement = imagesList[i];
+        divElement.dispatchEvent(mouseOverEvent);
+        await printImageUrl(i);
     }
-}
+})();
 
-function startSaving() {
+async function startSaving() {
 
     const images = [...document.getElementsByClassName("a-dynamic-image a-stretch-vertical"),...(document.getElementsByClassName("a-dynamic-image a-stretch-horizontal"))];
 
@@ -33,21 +28,16 @@ function startSaving() {
         imageLinks.push(imgSrc);
     }
 
-    let i=0;
-
-    const id = setInterval(saveImage,1000)
-
-    function saveImage() {
+    
+    for (let i = 0; i < imageLinks.length; i++) {
         const url = imageLinks[i];
 
-        chrome.runtime.sendMessage({action: 'downloadFile', url})
-
-        i++;
-
-        if(i==imageLinks.length){
-            clearInterval(id);
+        try {
+            await chrome.runtime.sendMessage({ action: 'downloadFile', url });
+        } catch (error) {
+            console.error(`Failed to download ${url}:`, error);
         }
     }
 
-
+    // console.log('All images have been processed.');
 }
