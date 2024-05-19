@@ -1,4 +1,5 @@
 const imageLinks=[];
+const imagesList = document.getElementsByClassName("HXf4Qp");
 
 const mouseOverEvent = new MouseEvent('mouseover', {
     bubbles: true,
@@ -29,60 +30,53 @@ async function getImageSrc(image) {
 async function printImageUrl(i){
     const element = document.getElementsByClassName("vU5WPQ")[0];
     
-    console.log("div",element);
     element.dispatchEvent(mouseOverEvent);
 
     const imgElement = document.getElementsByClassName("SuLbm2")[0];
 
-    console.log("img", imgElement)
+    // console.log("img", imgElement)
     try {
         const imgSrc = await getImageSrc(imgElement);
     
-        console.log(imgSrc);
+        // console.log(imgSrc);
         imageLinks.push(imgSrc);
-        console.log(i+1);
+        // console.log(i+1);
 
     } catch (error) {
         console.log(error.message || "failed to get this image");
     }
-}
 
-const imagesList = document.getElementsByClassName("HXf4Qp");
-let i=0;
-
-const id = setInterval(changeImage,1000)
-
-function changeImage() {
-    const divElement = imagesList[i];
-    divElement.dispatchEvent(mouseOverEvent);
-    printImageUrl(i);
-    i++;
-    if(i==imagesList.length){
-        clearInterval(id);
+    if(i==imagesList.length-1){
         startSaving();
     }
 }
 
 
-console.log("areimagesREady",imageLinks);
+;(async function changeImage() {
 
-function startSaving() {
+    for(let i=0;i<imagesList.length;i++) {
+        const divElement = imagesList[i];
+        divElement.dispatchEvent(mouseOverEvent);
+        await printImageUrl(i);
+    }
+})();
 
-    let i=0;
 
-    const id = setInterval(saveImage,1000)
+// console.log("areimagesReady");
 
-    function saveImage() {
+// console.log(imageLinks.length);
+
+async function startSaving() {
+    for (let i = 0; i < imageLinks.length; i++) {
         const url = imageLinks[i];
 
-        chrome.runtime.sendMessage({action: 'downloadFile', url})
-
-        i++;
-
-        if(i==imageLinks.length){
-            clearInterval(id);
+        try {
+            await chrome.runtime.sendMessage({ action: 'downloadFile', url });
+        } catch (error) {
+            console.error(`Failed to download ${url}:`, error);
         }
     }
 
-
+    console.log('All images have been processed.');
 }
+
