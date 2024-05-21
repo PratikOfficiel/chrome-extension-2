@@ -7,14 +7,17 @@ const mouseOverEvent = new MouseEvent('mouseover', {
     view: window
 });
 
-(async function changeImage() {
+function changeImage() {
 
     for(let i=0;i<imagesList.length;i++) {
         const divElement = imagesList[i];
         divElement.dispatchEvent(mouseOverEvent);
-        await printImageUrl(i);
     }
-})();
+
+    startSaving();
+}
+
+window.addEventListener('load', changeImage);
 
 async function startSaving() {
 
